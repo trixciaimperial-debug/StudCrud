@@ -1,0 +1,18 @@
+CREATE DATABASE IF NOT EXISTS studcrud_db
+  CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE studcrud_db;
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  role ENUM('admin','student') NOT NULL DEFAULT 'student',
+  username VARCHAR(100) NULL UNIQUE,
+  student_name VARCHAR(150) NOT NULL,
+  address TEXT NOT NULL,
+  lrn VARCHAR(30) NULL UNIQUE,
+  id_number VARCHAR(50) NULL UNIQUE,
+  birth_date DATE NULL,
+  contact_number VARCHAR(30) NOT NULL DEFAULT '',
+  email VARCHAR(150) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
